@@ -1,30 +1,21 @@
+%% Setup
 a = arduino('/dev/cu.usbmodem1421','Uno');
-%%
-clc
-close all
+
+%% Loop
+close all;    clc
 clearvars -except a
-i = 0;
-tic;
+
+i = 0;  tic;  % initialize index and time
 
 while true
+    % Update signal
     i = i + 1;
-    time(i) = toc;
-
-    volt(i) = readVoltage(a,0);
-   
-    figure(2)
+    t(i) = toc;
+    v(i) = readVoltage(a,0);
     
-    plot(time,volt)
-    
+    % Plot signal
+    plot(t, v)
+    xlim([t(i)-10 t(i)]);
     hold on
-    
-    xlim([time(i)-20 time(i)]);
-    
     drawnow
-   
 end
-
-
-
-
-
