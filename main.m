@@ -1,4 +1,4 @@
-function GUIcode
+function main
 eegfilename = input('Enter CSV filename for EEG data: ', 's');
 %Sampling Frequency
 Fs = 128;
