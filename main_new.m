@@ -1,7 +1,10 @@
 %% Microcontroller setup
+
 a = arduino('/dev/cu.usbmodem1421','Uno');
 
+
 %% Main Section
+
 close all;  clc
 clearvars -except a
 
