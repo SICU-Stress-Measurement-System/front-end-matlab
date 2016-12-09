@@ -42,14 +42,14 @@ function startLiveStream(handles)
     ekg (i,:) = readVoltage(a,'A0');
     
     % Plot signals
-    plot(eegAx, time, eeg(:,1), 'Color',co(1,:))
-    plot(eegAx, time, eeg(:,2), 'Color',co(5,:))
-    plot(eegAx, time, eeg(:,3), 'Color',co(6,:))
-    plot(eegAx, time, eeg(:,4), 'Color',co(7,:))
+    plot(eegAx, time, eeg(:,1), 'Color',co(1,:), 'LineWidth',2)
+    plot(eegAx, time, eeg(:,2), 'Color',co(5,:), 'LineWidth',2)
+    plot(eegAx, time, eeg(:,3), 'Color',co(6,:), 'LineWidth',2)
+    plot(eegAx, time, eeg(:,4), 'Color',co(7,:), 'LineWidth',2)
     xlim(eegAx, [t-10 t]);
     
-    plot(ekgAx, time, ekg,      'Color',co(2,:))
-    xlim(ekgAx, [t-10 t]);
+    plot(ekgAx, time, ekg,      'Color',co(2,:), 'LineWidth',2)
+    xlim(ekgAx, [t-10 t]);    set(ekgAx, 'Color',[.15 .15 .15]);  grid on
     
     drawnow()
   end
