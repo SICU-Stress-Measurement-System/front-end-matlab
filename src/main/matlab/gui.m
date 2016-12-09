@@ -122,6 +122,8 @@ if get(hObject,'Value')
 end
 set(hObject,'String',str)
 
+startLiveStream(handles)
+
 
 % --------------------------------------------------------------------
 function file_Callback(hObject, eventdata, handles)
@@ -177,6 +179,12 @@ function file_exit_Callback(hObject, eventdata, handles)
 % hObject    handle to file_exit (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+switch questdlg('Are you sure you want to exit?', ...
+    'Exit?', 'Exit', 'Cancel', 'Exit')
+  case 'Exit'
+    close;  clc
+end
 
 
 % --- Executes during object creation, after setting all properties.

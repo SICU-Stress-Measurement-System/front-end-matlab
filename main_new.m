@@ -1,6 +1,6 @@
 %% Microcontroller setup
 
-a = arduino('/dev/cu.usbmodem1421','Uno');
+a = arduino('COM5','Leonardo'); %'/dev/cu.usbmodem1421','Uno');
 
 
 %% Main Section
@@ -38,15 +38,17 @@ while true
     i = i + 1;  t = toc;
     time(i,:) = t;
     eeg (i,:) = inlet.pull_sample();
-    ekg (i,:) = readVoltage(a,0);
+    ekg (i,:) = readVoltage(a,'A0');
     
     % Plot signals
     plot(eegAx, time, eeg(:,1), 'Color',co(1,:))
     plot(eegAx, time, eeg(:,2), 'Color',co(5,:))
     plot(eegAx, time, eeg(:,3), 'Color',co(6,:))
     plot(eegAx, time, eeg(:,4), 'Color',co(7,:))
-    plot(ekgAx, time, ekg,      'Color',co(2,:))
     xlim(eegAx, [t-10 t]);
+    
+    plot(ekgAx, time, ekg,      'Color',co(2,:))
     xlim(ekgAx, [t-10 t]);
+    
     drawnow()
 end
